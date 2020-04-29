@@ -1,19 +1,53 @@
 {% extends 'layout.html' %}
 
 {% block body %}
-    <div class="jumbotron">    
+    <div class="jumbotron">
         <div class="container">
-            <h1>Confectionery</h1>
-            <ul class="list-group">
-                {% for product in products %}
-                    <div class="col-md-4">
-                        {% for values in product.values()%}
-                            <ul class="list-group-item">{{values}}</ul>   
-                        {% endfor %}
-                        <p><a class="btn btn-primary btn-lg" href="#" role="button">Add to cart</a></p>
+        <h1 class="display-4">Upload Your Files</h1>
+        <form class="" action="{{ url_for ('products')}}" method="POST", enctype="multipart/form-data">
+        <br>
+        <br>
+        {{ form.hidden_tag() }}
+        {{ form.file(class="btn btn-dark") }}
+        {{ form.submit(class="btn btn-primary")  }}
+        <br>
+        <br>
+        <div class="row">
+            <div class="col-md-3">
+                <label for="update_name">Product Name :</label><br/>
+                <input type="text" name="update_name" id="update_name" class="form-control" placeholder="Enter Name" />
+            </div>
+            <div class="col-md-3">
+                <label for="update_name">Product Brand :</label><br/>
+                <input type="text" name="update_name" class="form-control" id="update_name" placeholder="Enter Brand" />
+            </div>
+            <div class="col-md-3">
+                <div class="input-group">
+                    <label for="update_name">Product Price :</label><br>
+                    <div class="input-group-append">
+                        <input type="text" name="update_name" class="form-control" id="update_name"  placeholder="Enter Price" />
+                        <span class="input-group-text">pkr</span>
+                        <span class="input-group-text">0.00</span>
+                     </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <label for="update_name">Product Brand :</label><br/>
+                <div class="input-group">
+                    <input type="text" class="form-control" aria-label="Text input with dropdown button" placeholder="Select Type">
+                    <div class="input-group-append">
+                      <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</button>
+                      <div class="dropdown-menu">
+                        <a class="dropdown-item" href="#">Action</a>
+                        <a class="dropdown-item" href="#">Another action</a>
+                        <a class="dropdown-item" href="#">Something else here</a>
+                        <div role="separator" class="dropdown-divider"></div>
+                      </div>
                     </div>
-                {% endfor %}    
-            </ul>
-        </div>    
+                </div>
+            </div>
+        </div>
+        </form>
+        </div>
     </div>
 {% endblock %}

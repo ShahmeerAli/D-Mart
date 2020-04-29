@@ -3,8 +3,17 @@
 {% block body %}
     <div class="jumbotron">    
         <div class="container">
-            <h1>About Us</h1>
-            <p>This is about us</p>
+            <h1>Confectionery</h1>
+            <ul class="list-group">
+                {% for product in products %}
+                    <div class="col-md-4">
+                        {% for values in product.values()%}
+                            <ul class="list-group-item">{{values}}</ul>   
+                        {% endfor %}
+                        <p><a class="btn btn-primary btn-lg" href="#" role="button">Add to cart</a></p>
+                    </div>
+                {% endfor %}    
+            </ul>
         </div>    
     </div>
 {% endblock %}
